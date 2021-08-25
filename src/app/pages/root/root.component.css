@@ -1,0 +1,15 @@
+app-root {
+  opacity: 0;
+  height: 100%;
+}
+
+app-root .grid-root {
+  height: 100%;
+}
+
+.page-loaded app-root {
+  opacity: 1;
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+/*# sourceMappingURL=root.component.css.map */

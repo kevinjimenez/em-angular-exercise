@@ -1,0 +1,16 @@
+app-root {
+    opacity: 0;
+    height: 100%;
+  
+    .grid-root {
+      height: 100%;
+    }
+  }
+  
+  .page-loaded {
+    app-root {
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+  }
+  
