@@ -69,3 +69,6 @@ The module should allow the user to perform the following actions:
 Use `npm install` to install the dependencies.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+# Contact Us
+If you run into any issues, or have any questions, feel free to email me at `denis@everymundo.com`
