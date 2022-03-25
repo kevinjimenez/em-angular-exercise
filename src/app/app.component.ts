@@ -49,3 +49,52 @@ export class AppComponent implements OnInit, OnDestroy {
     this.unsubscribe.forEach((sb) => sb.unsubscribe());
   }
 }
+
+
+// {
+//   "total": 3,
+//   "result": [
+//       {
+//           "_id": "61227d5453e7b5000940263e",
+//           "countryCode": "US",
+//           "languageIsoCode": "es",
+//           "currencyCode": "MXN",
+//           "format": {
+//               "useCode": true,
+//               "cents": 2,
+//               "currencyPosition": "BEFORE",
+//               "thousandIdentifier": ",",
+//               "decimalSeparator": "."
+//           },
+//           "createdAt": "2021-10-28T09:19:36.371Z"
+//       },
+//       {
+//           "_id": "623b636f174a6b0009915df4",
+//           "countryCode": "AG",
+//           "languageIsoCode": "AG",
+//           "currencyCode": "AED",
+//           "format": {
+//               "useCode": true,
+//               "cents": 2,
+//               "currencyPosition": "AFTER",
+//               "thousandIdentifier": ",",
+//               "decimalSeparator": ","
+//           },
+//           "createdAt": "2022-03-23T18:14:07.814Z"
+//       },
+//       {
+//           "_id": "623b843a7c4e6b0008b06de7",
+//           "format": {
+//               "useCode": false,
+//               "cents": 0,
+//               "currencyPosition": "AFTER",
+//               "thousandIdentifier": ".",
+//               "decimalSeparator": ","
+//           },
+//           "countryCode": "AD",
+//           "currencyCode": "EUR",
+//           "languageIsoCode": "es",
+//           "createdAt": "2022-03-23T20:34:02.429Z"
+//       }
+//   ]
+// }

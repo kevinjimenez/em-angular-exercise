@@ -1,0 +1,29 @@
+<form [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label> Country Code </mat-label>
+    <input
+      matInput
+      type="text"
+      autocomplete="off"
+      formControlName="countryCode"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label> Language Iso Code </mat-label>
+    <input
+      matInput
+      type="text"
+      autocomplete="off"
+      formControlName="languageIsoCode"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Currency Code </mat-label>
+    <input
+      matInput
+      type="text"
+      autocomplete="off"
+      formControlName="currencyCode"
+    />
+  </mat-form-field>
+</form>

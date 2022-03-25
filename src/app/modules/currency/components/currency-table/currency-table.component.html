@@ -1,0 +1,28 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Preview</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let currency of currencies">
+      <td>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="d-flex justify-content-center">
+              <currency-format [currency]="currency"> </currency-format>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <app-currency-btn-edit (emitEditCurrency)="onEdit($event)">
+        </app-currency-btn-edit>
+        <app-currency-btn-delete
+          (emitDeleteCurrency)="onDelete($event)"
+        ></app-currency-btn-delete>
+      </td>
+    </tr>
+  </tbody>
+</table>

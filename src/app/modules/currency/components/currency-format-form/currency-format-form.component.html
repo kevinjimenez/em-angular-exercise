@@ -1,0 +1,53 @@
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6 text-center">
+      <section class="example-section">
+        <mat-slide-toggle formControlName="useCode">
+          Use code
+        </mat-slide-toggle>
+      </section>
+    </div>    
+    <div class="col-sm-6 text-center">
+      <section>
+        <label>Currency Position:</label>
+        <mat-radio-group formControlName="currencyPosition">
+          <mat-radio-button value="BEFORE">BEFORE</mat-radio-button>
+          <mat-radio-button value="AFTER">AFTER</mat-radio-button>
+        </mat-radio-group>
+      </section>
+    </div>
+    <div class="col-sm-4 text-center">
+      <mat-form-field appearance="outline">
+        <mat-label> Cents </mat-label>
+        <input
+          matInput
+          type="number"
+          autocomplete="off"
+          formControlName="cents"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field appearance="outline">
+        <mat-label> Thousand Identifier </mat-label>
+        <input
+          matInput
+          type="text"
+          autocomplete="off"
+          formControlName="thousandIdentifier"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field appearance="outline">
+        <mat-label> Decimal Separator </mat-label>
+        <input
+          matInput
+          type="text"
+          autocomplete="off"
+          formControlName="decimalSeparator"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+</form>
