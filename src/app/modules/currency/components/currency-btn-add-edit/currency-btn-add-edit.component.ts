@@ -21,8 +21,9 @@ export class CurrencyBtnAddEditComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
-      this.emitCurrency.emit(result);
+      if (result) {
+        this.emitCurrency.emit(result);
+      }
     });
   }
 }

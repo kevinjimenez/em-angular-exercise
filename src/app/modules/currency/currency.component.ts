@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { CurrencyApiService } from "src/app/services/currency.service";
 import { Currency } from "./currency-format/currency-format.typings";
 
@@ -13,6 +14,7 @@ export class CurrencyComponent implements OnInit {
 
   constructor(
     private currencyService: CurrencyApiService,
+    private snackBar: MatSnackBar,
     private ref: ChangeDetectorRef
   ) {}
 
@@ -20,7 +22,6 @@ export class CurrencyComponent implements OnInit {
     this.currencyService.getCurrencies().subscribe(
       (response) => {
         this.currencies = response.result;
-
         this.isLoading = false;
         this.ref.detectChanges();
       },
@@ -29,11 +30,16 @@ export class CurrencyComponent implements OnInit {
   }
 
   onAddEditCurrency(payload: Currency) {
+    this.isLoading = true;
     this.currencyService.addCurrency(payload).subscribe(
       (response) => {
-        console.log(response);
         this.currencies.unshift(payload);
+        this.snackBar.open(response.message, "Done", {
+          horizontalPosition: "center",
+          verticalPosition: "top",
+        });
         this.ref.detectChanges();
+        this.isLoading = false;
       },
       (error) => {}
     );

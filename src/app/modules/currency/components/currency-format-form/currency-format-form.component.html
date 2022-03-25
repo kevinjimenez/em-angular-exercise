@@ -2,21 +2,17 @@
   <div class="row">
     <div class="col-sm-6 text-center">
       <section>
-        <mat-slide-toggle formControlName="useCode">
-          Use code
-        </mat-slide-toggle>
+        <div class="row">
+          <div class="col-sm-12">
+            <h3>Use code</h3>
+          </div>
+          <div class="col-sm-12">
+            <mat-slide-toggle formControlName="useCode"> </mat-slide-toggle>
+          </div>
+        </div>
       </section>
     </div>
-    <div class="col-sm-6 text-center">
-      <section>
-        <label>Currency position:</label>
-        <mat-radio-group formControlName="currencyPosition">
-          <mat-radio-button value="BEFORE">BEFORE</mat-radio-button>
-          <mat-radio-button value="AFTER">AFTER</mat-radio-button>
-        </mat-radio-group>
-      </section>
-    </div>
-    <div class="col-sm-4 text-center">
+    <div class="col-sm-6">
       <mat-form-field appearance="outline">
         <mat-label> Cents </mat-label>
         <input
@@ -24,44 +20,78 @@
           type="number"
           autocomplete="off"
           formControlName="cents"
+          placeholder="Ex: 0"
+          required
         />
+        <mat-hint>Type cents </mat-hint>
       </mat-form-field>
+      <div class="message" [class.active]="isCentsFieldInvalid">
+        <mat-error *ngIf="centsField.hasError('required')">
+          Required field
+        </mat-error>
+      </div>
+      <div class="message" [class.active]="isCentsFieldInvalid">
+        <mat-error *ngIf="centsField.hasError('pattern')">
+          Only integer numbers
+        </mat-error>
+      </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 text-center">
       <section>
-        <label>Thousand identifier:</label>
-        <mat-radio-group formControlName="thousandIdentifier">
-          <mat-radio-button value=",">COMMA</mat-radio-button>
-          <mat-radio-button value=".">POINT</mat-radio-button>
-        </mat-radio-group>
+        <div class="row">
+          <div class="col-sm-12">
+            <h3>Currency position</h3>
+          </div>
+          <div class="col-sm-12">
+            <mat-radio-group formControlName="currencyPosition">
+              <mat-radio-button style="padding-right: 1rem" value="BEFORE"
+                >BEFORE</mat-radio-button
+              >
+              <mat-radio-button style="padding-left: 1rem" value="AFTER"
+                >AFTER</mat-radio-button
+              >
+            </mat-radio-group>
+          </div>
+        </div>
       </section>
-      <!-- <mat-form-field appearance="outline">
-        <mat-label> Thousand Identifier </mat-label>
-        <input
-          matInput
-          type="text"
-          autocomplete="off"
-          formControlName="thousandIdentifier"
-        />
-      </mat-form-field> -->
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 text-center">
       <section>
-        <label>Decimal separator:</label>
-        <mat-radio-group formControlName="decimalSeparator">
-          <mat-radio-button value=",">COMMA</mat-radio-button>
-          <mat-radio-button value=".">POINT</mat-radio-button>
-        </mat-radio-group>
+        <div class="row">
+          <div class="col-sm-12">
+            <h3>Thousand identifier</h3>
+          </div>
+          <div class="col-sm-12">
+            <mat-radio-group formControlName="thousandIdentifier">
+              <mat-radio-button style="padding-right: 1rem" value=","
+                >COMMA</mat-radio-button
+              >
+              <mat-radio-button style="padding-left: 1rem" value="."
+                >POINT</mat-radio-button
+              >
+            </mat-radio-group>
+          </div>
+        </div>
       </section>
-      <!-- <mat-form-field appearance="outline">
-        <mat-label> Decimal Separator </mat-label>
-        <input
-          matInput
-          type="text"
-          autocomplete="off"
-          formControlName="decimalSeparator"
-        />
-      </mat-form-field> -->
+    </div>
+    <div class="col-sm-4 text-center">
+      <section>
+        <div class="row">
+          <div class="col-sm-12">
+            <h3>Decimal separator</h3>
+          </div>
+          <div class="col-sm-12">
+            <mat-radio-group formControlName="decimalSeparator">
+              <mat-radio-button style="padding-right: 1rem" value=","
+                >COMMA</mat-radio-button
+              >
+              <mat-radio-button style="padding-left: 1rem" value="."
+                >POINT</mat-radio-button
+              >
+            </mat-radio-group>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </form>

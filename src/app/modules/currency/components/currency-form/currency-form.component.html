@@ -1,29 +1,59 @@
 <form [formGroup]="form">
-  <mat-form-field appearance="outline">
-    <mat-label> Country Code </mat-label>
-    <input
-      matInput
-      type="text"
-      autocomplete="off"
-      formControlName="countryCode"
-    />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label> Language Iso Code </mat-label>
-    <input
-      matInput
-      type="text"
-      autocomplete="off"
-      formControlName="languageIsoCode"
-    />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Currency Code </mat-label>
-    <input
-      matInput
-      type="text"
-      autocomplete="off"
-      formControlName="currencyCode"
-    />
-  </mat-form-field>
+  <section class="field-space">
+    <mat-form-field appearance="outline">
+      <mat-label> Country Code </mat-label>
+      <input
+        matInput
+        type="text"
+        autocomplete="off"
+        formControlName="countryCode"
+        placeholder="Ex: ECU"
+        required
+      />
+      <mat-hint>Type country code</mat-hint>
+    </mat-form-field>
+    <div class="message" [class.active]="isCountryCodeFieldInvalid">
+      <mat-error *ngIf="countryCodeField.hasError('required')">
+        Required field
+      </mat-error>
+    </div>
+  </section>
+  <section class="field-space">
+    <mat-form-field appearance="outline">
+      <mat-label> Language Iso Code </mat-label>
+      <input
+        matInput
+        type="text"
+        autocomplete="off"
+        formControlName="languageIsoCode"
+        placeholder="Ex: es"
+        required
+      />
+      <mat-hint>Type language iso code </mat-hint>
+    </mat-form-field>
+    <div class="message" [class.active]="isLanguageIsoCodeFieldInvalid">
+      <mat-error *ngIf="languageIsoCodeField.hasError('required')">
+        Required field
+      </mat-error>
+    </div>
+  </section>
+  <section class="field-space">
+    <mat-form-field appearance="outline">
+      <mat-label>Currency Code </mat-label>
+      <input
+        matInput
+        type="text"
+        autocomplete="off"
+        formControlName="currencyCode"
+        placeholder="Ex: USD"
+        required
+      />
+      <mat-hint>Type currency code</mat-hint>
+    </mat-form-field>
+    <div class="message" [class.active]="isCurrencyCodeFieldInvalid">
+      <mat-error *ngIf="currencyCodeField?.hasError('required')">
+        Required field
+      </mat-error>
+    </div>
+  </section>
 </form>

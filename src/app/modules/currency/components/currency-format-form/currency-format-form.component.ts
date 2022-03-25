@@ -31,19 +31,46 @@ export class CurrencyFormatFormComponent implements OnInit {
   private buildForm() {
     this.form = this._formBuilder.group({
       useCode: [this.format?.useCode ?? false, Validators.required],
-      cents: [this.format?.cents ?? "", Validators.required],
+      cents: [
+        this.format?.cents ?? "",
+        [Validators.required, Validators.pattern("^[0-9]*$")],
+      ],
       currencyPosition: [
-        this.format?.currencyPosition ?? "",
+        this.format?.currencyPosition ?? "BEFORE",
         Validators.required,
       ],
       thousandIdentifier: [
-        this.format?.thousandIdentifier ?? "",
+        this.format?.thousandIdentifier ?? ",",
         Validators.required,
       ],
       decimalSeparator: [
-        this.format?.decimalSeparator ?? "",
+        this.format?.decimalSeparator ?? ".",
         Validators.required,
       ],
     });
+  }
+
+  //* Get field form
+  get useCodeField() {
+    return this.form.get("useCode");
+  }
+
+  get centsField() {
+    return this.form.get("cents");
+  }
+
+  get currencyPositionField() {
+    return this.form.get("currencyPosition");
+  }
+  get thousandIdentifierField() {
+    return this.form.get("thousandIdentifier");
+  }
+  get decimalSeparatorField() {
+    return this.form.get("decimalSeparator");
+  }
+
+  //* Get validate form
+  get isCentsFieldInvalid() {
+    return this.centsField.touched && this.centsField.invalid;
   }
 }

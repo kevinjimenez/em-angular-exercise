@@ -31,5 +31,16 @@
     </div>
     <app-currency-table [currencies]="currencies"> </app-currency-table>
   </section>
-  <ng-template #elseCurrency> Loading... </ng-template>
+  <ng-template #elseCurrency>
+    <svg class="splash-spinner" viewBox="0 0 50 50">
+      <circle
+        class="path"
+        cx="25"
+        cy="25"
+        r="10"
+        fill="none"
+        stroke-width="3"
+      ></circle>
+    </svg>
+  </ng-template>
 </div>

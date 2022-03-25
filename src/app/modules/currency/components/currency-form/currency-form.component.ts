@@ -35,4 +35,32 @@ export class CurrencyFormComponent implements OnInit {
       currencyCode: [this.currency?.countryCode ?? "", Validators.required],
     });
   }
+
+  //* Get field form
+  get languageIsoCodeField() {
+    return this.form.get("languageIsoCode");
+  }
+
+  get countryCodeField() {
+    return this.form.get("countryCode");
+  }
+
+  get currencyCodeField() {
+    return this.form.get("currencyCode");
+  }
+
+  //* Get validate form
+  get isLanguageIsoCodeFieldInvalid() {
+    return (
+      this.languageIsoCodeField.touched && this.languageIsoCodeField.invalid
+    );
+  }
+
+  get isCountryCodeFieldInvalid() {
+    return this.countryCodeField.touched && this.countryCodeField.invalid;
+  }
+
+  get isCurrencyCodeFieldInvalid() {
+    return this.currencyCodeField.touched && this.currencyCodeField.invalid;
+  }
 }

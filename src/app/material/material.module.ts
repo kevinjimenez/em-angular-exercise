@@ -6,6 +6,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
     MatDividerModule,
     MatRadioModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -25,6 +27,7 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
     MatDividerModule,
     MatRadioModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialModule {}

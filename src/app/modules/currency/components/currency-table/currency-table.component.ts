@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from "@angular/core";
 import { Currency } from "../../currency-format/currency-format.typings";
 import { CurrencyApiService } from "../../../../services/currency.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-currency-table",
@@ -11,6 +12,7 @@ export class CurrencyTableComponent {
   @Input() currencies: Currency[] = [];
   constructor(
     private currencyService: CurrencyApiService,
+    private snackBar: MatSnackBar,
     private ref: ChangeDetectorRef
   ) {}
 
@@ -23,6 +25,10 @@ export class CurrencyTableComponent {
     this.currencyService.updateCurrency(id, data).subscribe(
       (response) => {
         this.currencies[index] = payload;
+        this.snackBar.open(response.message, "Done", {
+          horizontalPosition: "center",
+          verticalPosition: "top",
+        });
         this.ref.detectChanges();
       },
       (error) => {}
@@ -34,6 +40,10 @@ export class CurrencyTableComponent {
     this.currencyService.deleteCurrency(payload).subscribe(
       (response) => {
         this.currencies.splice(index, 1);
+        this.snackBar.open(response.message, "Done", {
+          horizontalPosition: "center",
+          verticalPosition: "top",
+        });
         this.ref.detectChanges();
       },
       (error) => {}
