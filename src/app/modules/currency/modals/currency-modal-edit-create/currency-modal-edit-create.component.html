@@ -1,10 +1,20 @@
 <h2 mat-dialog-title>Save or update</h2>
 <mat-dialog-content class="mat-typography">
-  <app-currency-form></app-currency-form>
-  <mat-divider></mat-divider>
-  <app-currency-format-form></app-currency-format-form>
+  <h4>Currency</h4>
+  <app-currency-form (emitCurrency)="onCurrency($event)"></app-currency-form>
+  <h4>Format currency</h4>
+  <app-currency-format-form
+    (emitFormat)="onFormat($event)"
+  ></app-currency-format-form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  <button
+    mat-button
+    color="primary"
+    [disabled]="!(payloadFormat && payloadCurrency)"
+    (click)="onSave()"
+  >
+    Save
+  </button>
 </mat-dialog-actions>

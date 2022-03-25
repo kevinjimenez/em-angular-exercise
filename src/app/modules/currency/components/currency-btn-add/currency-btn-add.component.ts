@@ -18,8 +18,8 @@ export class CurrencyBtnAddComponent implements OnInit {
     const dialogRef = this.dialog.open(CurrencyModalEditCreateComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      console.log(result);
+      this.emitNewCurrency.emit(result);
     });
-    this.emitNewCurrency.emit(undefined);
   }
 }

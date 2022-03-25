@@ -1,15 +1,15 @@
 <form [formGroup]="form">
   <div class="row">
     <div class="col-sm-6 text-center">
-      <section class="example-section">
+      <section>
         <mat-slide-toggle formControlName="useCode">
           Use code
         </mat-slide-toggle>
       </section>
-    </div>    
+    </div>
     <div class="col-sm-6 text-center">
       <section>
-        <label>Currency Position:</label>
+        <label>Currency position:</label>
         <mat-radio-group formControlName="currencyPosition">
           <mat-radio-button value="BEFORE">BEFORE</mat-radio-button>
           <mat-radio-button value="AFTER">AFTER</mat-radio-button>
@@ -28,7 +28,14 @@
       </mat-form-field>
     </div>
     <div class="col-sm-4">
-      <mat-form-field appearance="outline">
+      <section>
+        <label>Thousand identifier:</label>
+        <mat-radio-group formControlName="thousandIdentifier">
+          <mat-radio-button value=",">COMMA</mat-radio-button>
+          <mat-radio-button value=".">POINT</mat-radio-button>
+        </mat-radio-group>
+      </section>
+      <!-- <mat-form-field appearance="outline">
         <mat-label> Thousand Identifier </mat-label>
         <input
           matInput
@@ -36,10 +43,17 @@
           autocomplete="off"
           formControlName="thousandIdentifier"
         />
-      </mat-form-field>
+      </mat-form-field> -->
     </div>
     <div class="col-sm-4">
-      <mat-form-field appearance="outline">
+      <section>
+        <label>Decimal separator:</label>
+        <mat-radio-group formControlName="decimalSeparator">
+          <mat-radio-button value=",">COMMA</mat-radio-button>
+          <mat-radio-button value=".">POINT</mat-radio-button>
+        </mat-radio-group>
+      </section>
+      <!-- <mat-form-field appearance="outline">
         <mat-label> Decimal Separator </mat-label>
         <input
           matInput
@@ -47,7 +61,7 @@
           autocomplete="off"
           formControlName="decimalSeparator"
         />
-      </mat-form-field>
+      </mat-form-field> -->
     </div>
   </div>
 </form>
