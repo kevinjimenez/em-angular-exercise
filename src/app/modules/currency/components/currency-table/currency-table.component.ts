@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, ChangeDetectorRef } from "@angular/core";
 import { Currency } from "../../currency-format/currency-format.typings";
+import { CurrencyApiService } from "../../../../services/currency.service";
 
 @Component({
   selector: "app-currency-table",
@@ -8,12 +9,34 @@ import { Currency } from "../../currency-format/currency-format.typings";
 })
 export class CurrencyTableComponent {
   @Input() currencies: Currency[] = [];
+  constructor(
+    private currencyService: CurrencyApiService,
+    private ref: ChangeDetectorRef
+  ) {}
 
   onEdit(payload: Currency) {
-    console.log("edit", payload);
+    const index = this.currencies.findIndex(
+      (value) => value._id === payload._id
+    );
+    const id = payload._id;
+    const data = payload;
+    this.currencyService.updateCurrency(id, data).subscribe(
+      (response) => {
+        this.currencies[index] = payload;
+        this.ref.detectChanges();
+      },
+      (error) => {}
+    );
   }
 
   onDelete(payload: string) {
-    console.log("delete", payload);
+    const index = this.currencies.findIndex((value) => value._id === payload);
+    this.currencyService.deleteCurrency(payload).subscribe(
+      (response) => {
+        this.currencies.splice(index, 1);
+        this.ref.detectChanges();
+      },
+      (error) => {}
+    );
   }
 }

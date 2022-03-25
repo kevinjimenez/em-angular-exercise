@@ -28,11 +28,14 @@ export class CurrencyComponent implements OnInit {
     );
   }
 
-  addCurrency() {
-    // --- Add Currency button ---
-  }
-
   onAddEditCurrency(payload: Currency) {
-    console.log(payload);
+    this.currencyService.addCurrency(payload).subscribe(
+      (response) => {
+        console.log(response);
+        this.currencies.unshift(payload);
+        this.ref.detectChanges();
+      },
+      (error) => {}
+    );
   }
 }

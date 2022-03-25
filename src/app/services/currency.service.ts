@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { GetCurrencyResponseInterface } from "../interfaces/get-currency-response.interface";
+import { Currency } from "../modules/currency/currency-format/currency-format.typings";
 
 @Injectable({
   providedIn: "root",
@@ -25,22 +25,22 @@ export class CurrencyApiService {
   // --- Add the rest of your CRUD operations here ---
 
   //* Method create currency
-  addCurrency() {
-    return this.http.get(this.url, {
+  addCurrency(currency: Currency) {
+    return this.http.post<{ message: string }>(this.url, currency, {
       headers: this.headers,
     });
   }
 
   //* Method update currency
-  updateCurrencu(id: number) {
-    return this.http.get(this.url, {
+  updateCurrency(id: string, currency: Partial<Currency>) {
+    return this.http.put<{ message: string }>(this.url + id, currency, {
       headers: this.headers,
     });
   }
 
   //* Method delete currency
-  deleteCurrency(id: number) {
-    return this.http.get(this.url, {
+  deleteCurrency(id: string) {
+    return this.http.delete<{ message: string }>(this.url + id, {
       headers: this.headers,
     });
   }

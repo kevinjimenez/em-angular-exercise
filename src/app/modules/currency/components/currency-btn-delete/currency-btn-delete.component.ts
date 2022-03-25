@@ -21,8 +21,7 @@ export class CurrencyBtnDeleteComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.emitDeleteCurrency.emit(result);
     });
-    this.emitDeleteCurrency.emit(false);
   }
 }
