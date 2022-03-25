@@ -10,10 +10,10 @@ export class CurrencyTableComponent {
   @Input() currencies: Currency[] = [];
 
   onEdit(payload: Currency) {
-    alert("edit");
+    console.log("edit", payload);
   }
 
-  onDelete(payload: boolean) {
-    alert("delete");
+  onDelete(payload: string) {
+    console.log("delete", payload);
   }
 }

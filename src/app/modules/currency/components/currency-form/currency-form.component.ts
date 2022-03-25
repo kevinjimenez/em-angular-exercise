@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Currency } from "../../currency-format/currency-format.typings";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { debounceTime } from "rxjs/operators";
@@ -10,13 +10,13 @@ import { debounceTime } from "rxjs/operators";
 })
 export class CurrencyFormComponent implements OnInit {
   form: FormGroup;
+  @Input() currency: Currency;
   @Output() emitCurrency: EventEmitter<Currency | boolean> = new EventEmitter();
-  constructor(private readonly _formBuilder: FormBuilder) {
-    this.buildForm();
-  }
+  constructor(private readonly _formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.form.valueChanges.pipe(debounceTime(250)).subscribe((values) => {
+    this.buildForm();
+    this.form.valueChanges.pipe(debounceTime(250)).subscribe((_) => {
       if (this.form.valid) {
         this.emitCurrency.emit(this.form.value);
       } else {
@@ -27,9 +27,12 @@ export class CurrencyFormComponent implements OnInit {
 
   private buildForm() {
     this.form = this._formBuilder.group({
-      countryCode: ["", Validators.required],
-      languageIsoCode: ["", Validators.required],
-      currencyCode: ["", Validators.required],
+      countryCode: [this.currency?.countryCode ?? "", Validators.required],
+      languageIsoCode: [
+        this.currency?.languageIsoCode ?? "",
+        Validators.required,
+      ],
+      currencyCode: [this.currency?.countryCode ?? "", Validators.required],
     });
   }
 }

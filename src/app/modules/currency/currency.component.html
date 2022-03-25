@@ -20,9 +20,9 @@
 </div> -->
 <div id="currencies">
   <section *ngIf="currencies; else elseCurrency">
-    <app-currency-btn-add
-      (emitNewCurrency)="onNewCurrency($event)"
-    ></app-currency-btn-add>
+    <app-currency-btn-add-edit
+      (emitCurrency)="onAddEditCurrency($event)"
+    ></app-currency-btn-add-edit>
     <app-currency-table [currencies]="currencies"> </app-currency-table>
   </section>
   <ng-template #elseCurrency> Loading... </ng-template>

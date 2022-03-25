@@ -17,22 +17,22 @@ export class CurrencyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.currencyService
-      .getCurrencies()
-      .then((response) => {
+    this.currencyService.getCurrencies().subscribe(
+      (response) => {
         this.currencies = response.result;
 
         this.isLoading = false;
         this.ref.detectChanges();
-      })
-      .catch((err) => {});
+      },
+      (error) => {}
+    );
   }
 
   addCurrency() {
     // --- Add Currency button ---
   }
 
-  onNewCurrency(payload: Currency) {
+  onAddEditCurrency(payload: Currency) {
     console.log(payload);
   }
 }

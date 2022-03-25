@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { CurrencyBtnAddComponent } from "../../components/currency-btn-add/currency-btn-add.component";
+import { CurrencyBtnAddEditComponent } from "../../components/currency-btn-add-edit/currency-btn-add-edit.component";
 import {
   Currency,
   CurrencyFormat,
@@ -15,7 +15,7 @@ export class CurrencyModalEditCreateComponent implements OnInit {
   payloadFormat: CurrencyFormat | boolean;
   payloadCurrency: Currency | boolean;
   constructor(
-    public dialogRef: MatDialogRef<CurrencyBtnAddComponent>,
+    public dialogRef: MatDialogRef<CurrencyBtnAddEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Currency
   ) {}
 
@@ -38,10 +38,19 @@ export class CurrencyModalEditCreateComponent implements OnInit {
   }
 
   onSave() {
-    const data: Currency = {
-      ...(this.payloadCurrency as Currency),
-      format: this.payloadFormat as CurrencyFormat,
-    };
-    this.dialogRef.close(data);
+    let dataCurrency: Currency;
+    if (this.data) {
+      dataCurrency = {
+        ...this.data,
+        ...(this.payloadCurrency as Currency),
+        format: (this.payloadFormat as CurrencyFormat) ?? this.data.format,
+      };
+    } else {
+      dataCurrency = {
+        ...(this.payloadCurrency as Currency),
+        format: this.payloadFormat as CurrencyFormat,
+      };
+    }
+    this.dialogRef.close(dataCurrency);
   }
 }

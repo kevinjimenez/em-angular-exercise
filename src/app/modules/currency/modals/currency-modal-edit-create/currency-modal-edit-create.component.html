@@ -1,9 +1,13 @@
-<h2 mat-dialog-title>Save or update</h2>
+<h2 mat-dialog-title>{{ data ? "Edit" : "Create" }} Currency</h2>
 <mat-dialog-content class="mat-typography">
   <h4>Currency</h4>
-  <app-currency-form (emitCurrency)="onCurrency($event)"></app-currency-form>
+  <app-currency-form
+    [currency]="data"
+    (emitCurrency)="onCurrency($event)"
+  ></app-currency-form>
   <h4>Format currency</h4>
   <app-currency-format-form
+    [format]="data?.format"
     (emitFormat)="onFormat($event)"
   ></app-currency-format-form>
 </mat-dialog-content>
@@ -12,7 +16,7 @@
   <button
     mat-button
     color="primary"
-    [disabled]="!(payloadFormat && payloadCurrency)"
+    [disabled]="!data && !(payloadFormat && payloadCurrency)"
     (click)="onSave()"
   >
     Save

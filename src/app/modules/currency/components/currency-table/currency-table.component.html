@@ -17,9 +17,12 @@
         </div>
       </td>
       <td>
-        <app-currency-btn-edit (emitEditCurrency)="onEdit($event)">
-        </app-currency-btn-edit>
+        <app-currency-btn-add-edit
+          [currency]="currency"
+          (emitCurrency)="onEdit($event)"
+        ></app-currency-btn-add-edit>
         <app-currency-btn-delete
+          [currency]="currency"
           (emitDeleteCurrency)="onDelete($event)"
         ></app-currency-btn-delete>
       </td>

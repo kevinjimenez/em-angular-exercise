@@ -8,11 +8,10 @@ import { PricePreview } from "./price-preview/price-preview.component";
 import { RouterModule } from "@angular/router";
 import { Routes } from "@angular/router";
 import { CurrencyTableComponent } from "./components/currency-table/currency-table.component";
-import { CurrencyBtnEditComponent } from "./components/currency-btn-edit/currency-btn-edit.component";
 import { CurrencyBtnDeleteComponent } from "./components/currency-btn-delete/currency-btn-delete.component";
 import { CurrencyFormComponent } from "./components/currency-form/currency-form.component";
 import { CurrencyFormatFormComponent } from "./components/currency-format-form/currency-format-form.component";
-import { CurrencyBtnAddComponent } from "./components/currency-btn-add/currency-btn-add.component";
+import { CurrencyBtnAddEditComponent } from "./components/currency-btn-add-edit/currency-btn-add-edit.component";
 import { CurrencyModalEditCreateComponent } from "./modals/currency-modal-edit-create/currency-modal-edit-create.component";
 import { CurrencyModalDeleteComponent } from "./modals/currency-modal-delete/currency-modal-delete.component";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -46,11 +45,10 @@ const routes: Routes = [
     CurrencyFormat,
     PricePreview,
     CurrencyTableComponent,
-    CurrencyBtnEditComponent,
     CurrencyBtnDeleteComponent,
     CurrencyFormComponent,
     CurrencyFormatFormComponent,
-    CurrencyBtnAddComponent,
+    CurrencyBtnAddEditComponent,
     CurrencyModalEditCreateComponent,
     CurrencyModalDeleteComponent,
   ],
